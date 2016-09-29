@@ -35,8 +35,11 @@ public class TelaCadastroUsuario {
     private JPasswordField txtConfirmarSenha;
     private JButton btnSalvar;
     private JButton btnCancelar;
+    
+    private final GerenciadorUsuarios gerenciadorUsuarios; 
 
     public TelaCadastroUsuario() {
+        gerenciadorUsuarios = new GerenciadorUsuarios();
         construirTela();
     }
 
@@ -150,7 +153,7 @@ public class TelaCadastroUsuario {
                         throw new Exception(I18N.obterErroSenhasNaoConferem());
                     }
 
-                    GerenciadorUsuarios.cadastrarUsuario(carregarUsuario());
+                    gerenciadorUsuarios.cadastrarUsuario(carregarUsuario());
                     Utilidades.msgInformacao(I18N.obterSucessoCadastroUsuario());
                     limparTela();
                 } catch (Exception ex) {

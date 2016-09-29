@@ -8,12 +8,12 @@ import br.ufla.dcc.ppoo.seguranca.SessaoUsuario;
 
 public class GerenciadorUsuarios {
 
-    private static final UsuarioDAO repositorioUsuario
+    private final UsuarioDAO repositorioUsuario
             = UsuarioDAOLista.obterInstancia();
-    private static final SessaoUsuario sessaoUsuario
+    private final SessaoUsuario sessaoUsuario
             = SessaoUsuario.obterInstancia();
-
-    public static void autenticarUsuario(Usuario u) throws Exception {
+    
+    public void autenticarUsuario(Usuario u) throws Exception {
         Usuario ret = repositorioUsuario.obterUsuarioPeloLogin(u.obterLogin());
         if (ret == null || !u.checarSenha(u.obterSenha())) {
             throw new Exception(I18N.obterErroAutenticacao());
@@ -21,7 +21,7 @@ public class GerenciadorUsuarios {
         sessaoUsuario.alterarUsuario(ret);
     }
 
-    public static void cadastrarUsuario(Usuario u) throws Exception {
+    public void cadastrarUsuario(Usuario u) throws Exception {
         Usuario ret = repositorioUsuario.obterUsuarioPeloLogin(u.obterLogin());
         if (ret != null) {
             throw new Exception(I18N.obterErroUsuarioJaCadastrado());

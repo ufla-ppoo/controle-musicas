@@ -32,9 +32,12 @@ public class TelaAutenticacao {
     private JPasswordField txtSenha;
     private JButton btnEntrar;
     private JButton btnCancelar;
+    
+    private final GerenciadorUsuarios gerenciadorUsuarios;
 
     public TelaAutenticacao(TelaPrincipal telaPrincipal) {
         this.telaPrincipal = telaPrincipal;
+        gerenciadorUsuarios = new GerenciadorUsuarios();
     }
 
     public void inicializar() {
@@ -108,7 +111,7 @@ public class TelaAutenticacao {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    GerenciadorUsuarios.autenticarUsuario(carregarUsuario());
+                    gerenciadorUsuarios.autenticarUsuario(carregarUsuario());
                     telaPrincipal.inicializar();
                     janela.dispose();
                 } catch (Exception ex) {
