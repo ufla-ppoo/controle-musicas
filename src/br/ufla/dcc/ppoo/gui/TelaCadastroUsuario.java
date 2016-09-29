@@ -22,6 +22,9 @@ import javax.swing.JTextField;
 
 public class TelaCadastroUsuario {
 
+    private final TelaPrincipal telaPrincipal;
+    private final GerenciadorUsuarios gerenciadorUsuarios;
+
     private JDialog janela;
     private GridBagLayout layout;
     private GridBagConstraints gbc;
@@ -35,12 +38,16 @@ public class TelaCadastroUsuario {
     private JPasswordField txtConfirmarSenha;
     private JButton btnSalvar;
     private JButton btnCancelar;
-    
-    private final GerenciadorUsuarios gerenciadorUsuarios; 
 
-    public TelaCadastroUsuario() {
-        gerenciadorUsuarios = new GerenciadorUsuarios();
+    public TelaCadastroUsuario(TelaPrincipal telaPrincipal) {
+        this.gerenciadorUsuarios = new GerenciadorUsuarios();
+        this.telaPrincipal = telaPrincipal;
+    }
+    
+    public void inicializar() {
         construirTela();
+        configurarAcoesBotoes();
+        exibirTela();
     }
 
     private void adicionarComponente(Component c,
@@ -171,16 +178,15 @@ public class TelaCadastroUsuario {
         layout = new GridBagLayout();
         gbc = new GridBagConstraints();
         janela.setLayout(layout);
-        adicionarComponentes();
-        configurarAcoesBotoes();
+        adicionarComponentes();        
         janela.pack();
     }
 
-    public void exibirTela(JFrame janelaPai) {
+    public void exibirTela() {
         janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        janela.setLocationRelativeTo(janela);
+        janela.setLocationRelativeTo(telaPrincipal.obterJanela());
         janela.setModal(true);
         janela.setVisible(true);
-        janela.setResizable(false);        
+        janela.setResizable(false);
     }
 }

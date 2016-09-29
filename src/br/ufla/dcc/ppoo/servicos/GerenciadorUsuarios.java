@@ -8,11 +8,16 @@ import br.ufla.dcc.ppoo.seguranca.SessaoUsuario;
 
 public class GerenciadorUsuarios {
 
-    private final UsuarioDAO repositorioUsuario
-            = UsuarioDAOLista.obterInstancia();
-    private final SessaoUsuario sessaoUsuario
-            = SessaoUsuario.obterInstancia();
-    
+    private final UsuarioDAO repositorioUsuario;
+    private final SessaoUsuario sessaoUsuario;
+
+    public GerenciadorUsuarios() {
+        repositorioUsuario
+                = UsuarioDAOLista.obterInstancia();
+        sessaoUsuario
+                = SessaoUsuario.obterInstancia();
+    }
+
     public void autenticarUsuario(Usuario u) throws Exception {
         Usuario ret = repositorioUsuario.obterUsuarioPeloLogin(u.obterLogin());
         if (ret == null || !u.checarSenha(u.obterSenha())) {

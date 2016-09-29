@@ -17,6 +17,7 @@ public class TelaPrincipal {
 
     private final SessaoUsuario sessaoUsuario;
     private final TelaAutenticacao telaAutenticacao;
+    private final TelaCadastroUsuario telaCadastroUsuario;
     private JFrame janela;
 
     private JMenuBar menuPrincipal;
@@ -34,6 +35,7 @@ public class TelaPrincipal {
 
     public TelaPrincipal() {
         telaAutenticacao = new TelaAutenticacao(this);
+        telaCadastroUsuario = new TelaCadastroUsuario(this);
         sessaoUsuario = SessaoUsuario.obterInstancia();
     }
 
@@ -92,7 +94,7 @@ public class TelaPrincipal {
         menuCadastrarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new TelaCadastroUsuario().exibirTela(janela);
+                telaCadastroUsuario.inicializar();
             }
         });
 

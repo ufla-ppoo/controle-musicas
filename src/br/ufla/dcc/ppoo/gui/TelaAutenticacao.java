@@ -22,7 +22,8 @@ import javax.swing.JTextField;
 public class TelaAutenticacao {
 
     private final TelaPrincipal telaPrincipal;
-
+    private final GerenciadorUsuarios gerenciadorUsuarios;
+            
     private JDialog janela;
     private GridBagLayout layout;
     private GridBagConstraints gbc;
@@ -32,12 +33,10 @@ public class TelaAutenticacao {
     private JPasswordField txtSenha;
     private JButton btnEntrar;
     private JButton btnCancelar;
-    
-    private final GerenciadorUsuarios gerenciadorUsuarios;
 
     public TelaAutenticacao(TelaPrincipal telaPrincipal) {
+        this.gerenciadorUsuarios = new GerenciadorUsuarios();
         this.telaPrincipal = telaPrincipal;
-        gerenciadorUsuarios = new GerenciadorUsuarios();
     }
 
     public void inicializar() {
