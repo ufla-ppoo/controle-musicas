@@ -79,6 +79,10 @@ public class I18N {
         return rb.getString("confirmacao.saida.descricao");
     }
 
+    public static String obterConfirmacaoDeletar() {
+        return rb.getString("confirmacao.deletar.descricao");
+    }
+
     public static String obterErroAutenticacao() {
         return rb.getString("erro.usuario.autenticacao");
     }
@@ -154,11 +158,11 @@ public class I18N {
     public static String obterBotaoEditar() {
         return rb.getString("botao.editar");
     }
-    
+
     public static String obterBotaoDeletar() {
         return rb.getString("botao.deletar");
     }
-    
+
     public static String obterRotuloUsuarioNome() {
         return rb.getString("rotulo.usuario.nome");
     }
@@ -194,4 +198,5 @@ public class I18N {
     public static String obterColunaAutoresLivro() {
         return rb.getString("coluna.autoreslivro");
     }
+
 }

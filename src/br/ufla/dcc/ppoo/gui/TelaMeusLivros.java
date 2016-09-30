@@ -3,6 +3,7 @@ package br.ufla.dcc.ppoo.gui;
 import br.ufla.dcc.ppoo.i18n.I18N;
 import br.ufla.dcc.ppoo.imagens.GerenciadorDeImagens;
 import br.ufla.dcc.ppoo.servicos.GerenciadorUsuarios;
+import br.ufla.dcc.ppoo.util.Utilidades;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -57,7 +58,7 @@ public class TelaMeusLivros {
         configurarEventosTela();
         exibirTela();
     }
-    
+
     private void construirTabela() {
         Object[] titulosColunas = {
             I18N.obterColunaTituloLivro(),
@@ -72,7 +73,7 @@ public class TelaMeusLivros {
 
         tbLivros = new JTable(dados, titulosColunas);
         tbLivros.setPreferredScrollableViewportSize(new Dimension(500, 70));
-        tbLivros.setFillsViewportHeight(true);  
+        tbLivros.setFillsViewportHeight(true);
     }
 
     private void adicionarComponente(Component c,
@@ -87,6 +88,82 @@ public class TelaMeusLivros {
         gbc.insets = new Insets(5, 5, 5, 5);
         layout.setConstraints(c, gbc);
         janela.add(c);
+    }
+
+    private void prepararComponentesEstadoInicial() {
+        tbLivros.clearSelection();
+        tbLivros.setEnabled(true);
+
+        txtTitulo.setText("");
+        txtAutores.setText("");
+        txtAno.setText("");
+        txtNumPaginas.setText("");
+        taDescricao.setText("");
+
+        txtTitulo.setEditable(false);
+        txtAutores.setEditable(false);
+        txtAno.setEditable(false);
+        txtNumPaginas.setEditable(false);
+        taDescricao.setEditable(false);
+
+        btnNovoLivro.setEnabled(true);
+        btnEditarLivro.setEnabled(false);
+        btnSalvarLivro.setEnabled(false);
+        btnDeletarLivro.setEnabled(false);
+        btnCancelar.setEnabled(true);
+    }
+
+    private void prepararComponentesEstadoSelecaoLivro() {
+        txtTitulo.setEditable(false);
+        txtAutores.setEditable(false);
+        txtAno.setEditable(false);
+        txtNumPaginas.setEditable(false);
+        taDescricao.setEditable(false);
+
+        btnNovoLivro.setEnabled(true);
+        btnEditarLivro.setEnabled(true);
+        btnSalvarLivro.setEnabled(false);
+        btnDeletarLivro.setEnabled(true);
+        btnCancelar.setEnabled(true);
+    }
+
+    private void prepararComponentesEstadoNovoLivro() {
+        tbLivros.clearSelection();
+        tbLivros.setEnabled(false);
+
+        txtTitulo.setText("");
+        txtAutores.setText("");
+        txtAno.setText("");
+        txtNumPaginas.setText("");
+        taDescricao.setText("");
+
+        txtTitulo.setEditable(true);
+        txtAutores.setEditable(true);
+        txtAno.setEditable(true);
+        txtNumPaginas.setEditable(true);
+        taDescricao.setEditable(true);
+
+        btnNovoLivro.setEnabled(false);
+        btnEditarLivro.setEnabled(false);
+        btnSalvarLivro.setEnabled(true);
+        btnDeletarLivro.setEnabled(false);
+        btnCancelar.setEnabled(true);
+    }
+
+    private void prepararComponentesEstadoEditouLivro() {
+        tbLivros.setEnabled(false);
+
+        txtTitulo.setEditable(true);
+        txtAutores.setEditable(true);
+        txtAno.setEditable(true);
+        txtNumPaginas.setEditable(true);
+        taDescricao.setEditable(true);
+
+        btnNovoLivro.setEnabled(false);
+        btnEditarLivro.setEnabled(false);
+        btnSalvarLivro.setEnabled(true);
+        btnDeletarLivro.setEnabled(false);
+        btnCancelar.setEnabled(true);
     }
 
     private void adicionarComponentes() {
@@ -104,6 +181,7 @@ public class TelaMeusLivros {
                 1, 0, 1, 1);
 
         txtTitulo = new JTextField(25);
+        txtTitulo.setEditable(false);
         adicionarComponente(txtTitulo,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
@@ -116,6 +194,7 @@ public class TelaMeusLivros {
                 2, 0, 1, 1);
 
         txtAutores = new JTextField(25);
+        txtAutores.setEditable(false);
         adicionarComponente(txtAutores,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
@@ -128,6 +207,7 @@ public class TelaMeusLivros {
                 3, 0, 1, 1);
 
         txtAno = new JTextField(8);
+        txtAno.setEditable(false);
         adicionarComponente(txtAno,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
@@ -140,6 +220,7 @@ public class TelaMeusLivros {
                 3, 2, 1, 1);
 
         txtNumPaginas = new JTextField(8);
+        txtNumPaginas.setEditable(false);
         adicionarComponente(txtNumPaginas,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
@@ -152,6 +233,7 @@ public class TelaMeusLivros {
                 4, 0, 1, 1);
 
         taDescricao = new JTextArea(7, 25);
+        taDescricao.setEditable(false);
         JScrollPane scrollPaneDescricao = new JScrollPane(taDescricao,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         adicionarComponente(scrollPaneDescricao,
@@ -160,17 +242,26 @@ public class TelaMeusLivros {
                 4, 1, 3, 1);
 
         btnNovoLivro = new JButton(I18N.obterBotaoNovo(),
-                GerenciadorDeImagens.NOVO);        
+                GerenciadorDeImagens.NOVO);
+
         btnEditarLivro = new JButton(I18N.obterBotaoEditar(),
                 GerenciadorDeImagens.EDITAR);
+
+        btnSalvarLivro = new JButton(I18N.obterBotaoSalvar(),
+                GerenciadorDeImagens.OK);
+
         btnDeletarLivro = new JButton(I18N.obterBotaoDeletar(),
                 GerenciadorDeImagens.DELETAR);
+
         btnCancelar = new JButton(I18N.obterBotaoCancelar(),
                 GerenciadorDeImagens.CANCELAR);
+
+        prepararComponentesEstadoInicial();
 
         JPanel painelBotoes = new JPanel();
         painelBotoes.add(btnNovoLivro);
         painelBotoes.add(btnEditarLivro);
+        painelBotoes.add(btnSalvarLivro);
         painelBotoes.add(btnDeletarLivro);
         painelBotoes.add(btnCancelar);
 
@@ -178,7 +269,16 @@ public class TelaMeusLivros {
                 GridBagConstraints.CENTER,
                 GridBagConstraints.NONE,
                 6, 0, 4, 1);
+    }
 
+    private void selecionouLivro() {
+        // Dados "fake"
+        String texto = String.format("Linha selecionada: %d", tbLivros.getSelectedRow());
+        txtTitulo.setText(texto);
+        txtAutores.setText(texto);
+        txtAno.setText(texto);
+        txtNumPaginas.setText(texto);
+        taDescricao.setText(texto);
     }
 
     private void configurarEventosTela() {
@@ -188,20 +288,44 @@ public class TelaMeusLivros {
                 janela.dispose();
             }
         });
-        
+
         tbLivros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                // Dados "fake"
-                String texto = String.format("Linha selecionada: %d", tbLivros.getSelectedRow());
-                txtTitulo.setText(texto);
-                txtAutores.setText(texto);
-                txtAno.setText(texto);
-                txtNumPaginas.setText(texto);
-                taDescricao.setText(texto);
+                prepararComponentesEstadoSelecaoLivro();
+                selecionouLivro();
             }
         });
-        
+
+        btnEditarLivro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prepararComponentesEstadoEditouLivro();
+            }
+        });
+
+        btnSalvarLivro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prepararComponentesEstadoInicial();
+            }
+        });
+
+        btnNovoLivro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                prepararComponentesEstadoNovoLivro();
+            }
+        });
+
+        btnDeletarLivro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Utilidades.msgConfirmacao(I18N.obterConfirmacaoDeletar())) {
+                    // Remover livro!
+                }
+            }
+        });
     }
 
     private void construirTela() {
