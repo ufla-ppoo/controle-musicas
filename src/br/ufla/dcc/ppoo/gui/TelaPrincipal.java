@@ -18,6 +18,8 @@ public class TelaPrincipal {
     private final SessaoUsuario sessaoUsuario;
     private final TelaAutenticacao telaAutenticacao;
     private final TelaCadastroUsuario telaCadastroUsuario;
+    private final TelaMeusLivros telaMeusLivros;
+
     private JFrame janela;
 
     private JMenuBar menuPrincipal;
@@ -30,12 +32,16 @@ public class TelaPrincipal {
     private JMenuItem menuIdiomaPortugues;
     private JMenuItem menuIdiomaIngles;
     private JMenuItem menuSair;
-    private JMenuItem menuLogout;
     private JMenuItem menuSobre;
+
+    // Itens de menu específicos para usuários logados no sistema    
+    private JMenuItem menuLogout;
+    private JMenuItem menuMeusLivros;
 
     public TelaPrincipal() {
         telaAutenticacao = new TelaAutenticacao(this);
         telaCadastroUsuario = new TelaCadastroUsuario(this);
+        telaMeusLivros = new TelaMeusLivros(this);
         sessaoUsuario = SessaoUsuario.obterInstancia();
     }
 
@@ -91,6 +97,13 @@ public class TelaPrincipal {
             }
         });
 
+        menuMeusLivros.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaMeusLivros.inicializar();
+            }
+        });
+
         menuCadastrarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -121,15 +134,13 @@ public class TelaPrincipal {
         menuEntrar = new JMenuItem(I18N.obterMenuEntrar(), GerenciadorDeImagens.ENTRAR);
         menuCadastrarUsuario = new JMenuItem(I18N.obterMenuCadastrarUsuario(), GerenciadorDeImagens.CADASTRAR_USUARIO);
         menuLogout = new JMenuItem(I18N.obterMenuLogout(), GerenciadorDeImagens.LOGOUT);
+        menuMeusLivros = new JMenuItem(I18N.obterMenuMeusLivros(), GerenciadorDeImagens.MEUS_LIVROS);
 
         if (!sessaoUsuario.estahLogado()) {
             menuInicio.add(menuEntrar);
             menuInicio.add(menuCadastrarUsuario);
         } else {
-            // Aqui você poderá adicionar outros menus adequados
-            // ao seu projeto que serão exibidos quando o
-            // usuário estiver logado no sistema.
-
+            menuInicio.add(menuMeusLivros);
             menuInicio.add(menuLogout);
         }
 

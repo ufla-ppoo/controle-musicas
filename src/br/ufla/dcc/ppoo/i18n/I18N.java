@@ -31,6 +31,10 @@ public class I18N {
         return rb.getString("menu.inicio.entrar");
     }
 
+    public static String obterMenuMeusLivros() {
+        return rb.getString("menu.inicio.meus_livros");
+    }
+
     public static String obterMenuCadastrarUsuario() {
         return rb.getString("menu.inicio.cadastrar");
     }
@@ -86,7 +90,7 @@ public class I18N {
     public static String obterErroSenhasNaoConferem() {
         return rb.getString("erro.usuario.senhas_nao_conferem");
     }
-    
+
     public static String obterSucessoCadastroUsuario() {
         return rb.getString("sucesso.usuario.cadastro");
     }
@@ -115,12 +119,20 @@ public class I18N {
         return obterNomeDoSistema();
     }
 
-    public static String obterRotuloUsuario() {
-        return rb.getString("rotulo.usuario");
+    public static String obterTituloTelaMeusLivros() {
+        return rb.getString("tela.meuslivros.titulo");
     }
 
-    public static String obterRotuloSenha() {
-        return rb.getString("rotulo.senha");
+    public static String obterTituloTelaCadastrarUsuario() {
+        return rb.getString("tela.cadastrousuario.titulo");
+    }
+
+    public static String obterRotuloUsuarioLogin() {
+        return rb.getString("rotulo.usuario.login");
+    }
+
+    public static String obterRotuloUsuarioSenha() {
+        return rb.getString("rotulo.usuario.senha");
     }
 
     public static String obterBotaoEntrar() {
@@ -135,12 +147,51 @@ public class I18N {
         return rb.getString("botao.salvar");
     }
 
-    public static String obterRotuloNome() {
-        return rb.getString("rotulo.nome");
+    public static String obterBotaoNovo() {
+        return rb.getString("botao.novo");
     }
 
-    public static String obterRotuloConfirmarSenha() {
-        return rb.getString("rotulo.confirmar_senha");
+    public static String obterBotaoEditar() {
+        return rb.getString("botao.editar");
+    }
+    
+    public static String obterBotaoDeletar() {
+        return rb.getString("botao.deletar");
+    }
+    
+    public static String obterRotuloUsuarioNome() {
+        return rb.getString("rotulo.usuario.nome");
     }
 
+    public static String obterRotuloLivroTitulo() {
+        return rb.getString("rotulo.livro.titulo");
+    }
+
+    public static String obterRotuloLivroAutores() {
+        return rb.getString("rotulo.livro.autores");
+    }
+
+    public static String obterRotuloLivroAno() {
+        return rb.getString("rotulo.livro.ano");
+    }
+
+    public static String obterRotuloLivroPaginas() {
+        return rb.getString("rotulo.livro.numpaginas");
+    }
+
+    public static String obterRotuloLivroDescricao() {
+        return rb.getString("rotulo.livro.descricao");
+    }
+
+    public static String obterRotuloUsuarioConfirmarSenha() {
+        return rb.getString("rotulo.usuario.confirmar_senha");
+    }
+
+    public static String obterColunaTituloLivro() {
+        return rb.getString("coluna.titulolivro");
+    }
+
+    public static String obterColunaAutoresLivro() {
+        return rb.getString("coluna.autoreslivro");
+    }
 }

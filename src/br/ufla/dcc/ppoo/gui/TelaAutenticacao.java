@@ -60,13 +60,13 @@ public class TelaAutenticacao {
     }
 
     private void adicionarComponentes() {
-        lbLogin = new JLabel(I18N.obterRotuloUsuario());
+        lbLogin = new JLabel(I18N.obterRotuloUsuarioLogin());
         adicionarComponente(lbLogin,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 0, 0, 1, 1);
 
-        lbSenha = new JLabel(I18N.obterRotuloSenha());
+        lbSenha = new JLabel(I18N.obterRotuloUsuarioSenha());
         adicionarComponente(lbSenha,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,

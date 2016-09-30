@@ -65,25 +65,25 @@ public class TelaCadastroUsuario {
     }
 
     private void adicionarComponentes() {
-        lbNome = new JLabel(I18N.obterRotuloNome());
+        lbNome = new JLabel(I18N.obterRotuloUsuarioNome());
         adicionarComponente(lbNome,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 0, 0, 1, 1);
 
-        lbLogin = new JLabel(I18N.obterRotuloUsuario());
+        lbLogin = new JLabel(I18N.obterRotuloUsuarioLogin());
         adicionarComponente(lbLogin,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 1, 0, 1, 1);
 
-        lbSenha = new JLabel(I18N.obterRotuloSenha());
+        lbSenha = new JLabel(I18N.obterRotuloUsuarioSenha());
         adicionarComponente(lbSenha,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 2, 0, 1, 1);
 
-        lbConfirmarSenha = new JLabel(I18N.obterRotuloConfirmarSenha());
+        lbConfirmarSenha = new JLabel(I18N.obterRotuloUsuarioConfirmarSenha());
         adicionarComponente(lbConfirmarSenha,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
@@ -174,7 +174,7 @@ public class TelaCadastroUsuario {
 
     private void construirTela() {
         janela = new JDialog();
-        janela.setTitle(I18N.obterTituloTelaAutenticacao());
+        janela.setTitle(I18N.obterTituloTelaCadastrarUsuario());
         layout = new GridBagLayout();
         gbc = new GridBagConstraints();
         janela.setLayout(layout);
