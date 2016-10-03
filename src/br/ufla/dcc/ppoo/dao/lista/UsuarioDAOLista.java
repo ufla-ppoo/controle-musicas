@@ -5,11 +5,23 @@ import br.ufla.dcc.ppoo.modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementação do Data Access Object (Padrão de Projeto) do Usuário através de
+ * Lista em memória
+ * 
+ * @author Paulo Jr. e Julio Alves
+ */
 public class UsuarioDAOLista implements UsuarioDAO {
 
+    // instância única da classe (Padrão de Projeto Singleton)
     private static UsuarioDAOLista instancia;
+    
+    // lista em em memória dos usuários cadastrados
     private final List<Usuario> listaUsuario;
 
+    /**
+     * Constrói o objeto já definindo 5 usuários padrões
+     */
     private UsuarioDAOLista() {
         listaUsuario = new ArrayList<Usuario>();
 
@@ -23,6 +35,11 @@ public class UsuarioDAOLista implements UsuarioDAO {
 
     }
 
+    /**
+     * Retorna a instância única da classe (Padrão de Projeto Singleton)
+     * 
+     * @return A instância única da classe
+     */
     public static UsuarioDAOLista obterInstancia() {
         if (instancia == null) {
             instancia = new UsuarioDAOLista();
@@ -30,6 +47,12 @@ public class UsuarioDAOLista implements UsuarioDAO {
         return instancia;
     }
 
+    /**
+     * Retorna o usuário a partir de seu login
+     * 
+     * @param login Login do usuário a ser retornado.
+     * @return Usuário correspondente ao login passado.
+     */
     @Override
     public Usuario obterUsuarioPeloLogin(String login) {
         for (Usuario u : listaUsuario) {
@@ -40,8 +63,13 @@ public class UsuarioDAOLista implements UsuarioDAO {
         return null;
     }
 
+    /**
+     * Cadastra o usuário passado.
+     * 
+     * @param usuario Usuário a ser cadastrado.
+     */
     @Override
-    public void adicionarUsuario(Usuario u) {
-        listaUsuario.add(u);
+    public void adicionarUsuario(Usuario usuario) {
+        listaUsuario.add(usuario);
     }
 }

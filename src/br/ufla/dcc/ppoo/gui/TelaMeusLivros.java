@@ -23,11 +23,19 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Classe que representa a tela Meus Livros
+ * 
+ * @author Paulo Jr. e Julio Alves
+ */
 public class TelaMeusLivros {
 
+    // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
+    // referência para o gerenciador de usuários
     private final GerenciadorUsuarios gerenciadorUsuarios;
-
+            
+    // componentes da tela
     private JDialog janela;
     private GridBagLayout layout;
     private GridBagConstraints gbc;
@@ -48,17 +56,30 @@ public class TelaMeusLivros {
     private JTextField txtNumPaginas;
     private JTextArea taDescricao;
 
+     /**
+     * Constrói a tela de autenticação guardando a referência da tela principal
+     * e criando o gerenciador de usuários.
+     * 
+     * @param telaPrincipal Referência da tela principal.
+     */
     public TelaMeusLivros(TelaPrincipal telaPrincipal) {
         this.gerenciadorUsuarios = new GerenciadorUsuarios();
         this.telaPrincipal = telaPrincipal;
     }
 
+    /**
+     * Inicializa a tela, construindo seus componentes, configurando os eventos
+     * e, ao final, exibe a tela.
+     */
     public void inicializar() {
         construirTela();
         configurarEventosTela();
         exibirTela();
     }
 
+    /**
+     * Constrói a janela tratando internacionalização, componentes e layout.
+     */
     private void construirTabela() {
         Object[] titulosColunas = {
             I18N.obterColunaTituloLivro(),
@@ -76,6 +97,9 @@ public class TelaMeusLivros {
         tbLivros.setFillsViewportHeight(true);
     }
 
+    /**
+     * Adiciona um componente à tela.
+     */
     private void adicionarComponente(Component c,
             int anchor, int fill, int linha,
             int coluna, int largura, int altura) {
@@ -90,6 +114,9 @@ public class TelaMeusLivros {
         janela.add(c);
     }
 
+    /**
+     * Trata o estado inicial da tela
+     */
     private void prepararComponentesEstadoInicial() {
         tbLivros.clearSelection();
         tbLivros.setEnabled(true);
@@ -113,6 +140,9 @@ public class TelaMeusLivros {
         btnCancelar.setEnabled(true);
     }
 
+    /**
+     * Trata o estado da tela para seleção de livros
+     */
     private void prepararComponentesEstadoSelecaoLivro() {
         txtTitulo.setEditable(false);
         txtAutores.setEditable(false);
@@ -127,6 +157,9 @@ public class TelaMeusLivros {
         btnCancelar.setEnabled(true);
     }
 
+    /**
+     * Trata o estado da tela para cadastro de novo livro
+     */
     private void prepararComponentesEstadoNovoLivro() {
         tbLivros.clearSelection();
         tbLivros.setEnabled(false);
@@ -150,6 +183,9 @@ public class TelaMeusLivros {
         btnCancelar.setEnabled(true);
     }
 
+    /**
+     * Trata o estado da tela para cadastro livro editado
+     */
     private void prepararComponentesEstadoEditouLivro() {
         tbLivros.setEnabled(false);
 
@@ -166,6 +202,9 @@ public class TelaMeusLivros {
         btnCancelar.setEnabled(true);
     }
 
+    /**
+     * Adiciona os componentes da tela tratando layout e internacionalização
+     */
     private void adicionarComponentes() {
         construirTabela();
         JScrollPane scrollPaneTabela = new JScrollPane(tbLivros);
@@ -213,7 +252,7 @@ public class TelaMeusLivros {
                 GridBagConstraints.HORIZONTAL,
                 3, 1, 1, 1);
 
-        lbNumPaginas = new JLabel(I18N.obterRotuloLivroPaginas());
+        lbNumPaginas = new JLabel(I18N.obterRotuloLivroNroPaginas());
         adicionarComponente(lbNumPaginas,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
@@ -271,6 +310,9 @@ public class TelaMeusLivros {
                 6, 0, 4, 1);
     }
 
+    /**
+     * Trata a selação de livros na grade.
+     */
     private void selecionouLivro() {
         // Dados "fake"
         String texto = String.format("Linha selecionada: %d", tbLivros.getSelectedRow());
@@ -281,6 +323,9 @@ public class TelaMeusLivros {
         taDescricao.setText(texto);
     }
 
+    /**
+     * Configura os eventos da tela.
+     */
     private void configurarEventosTela() {
         btnCancelar.addActionListener(new ActionListener() {
             @Override
@@ -328,6 +373,9 @@ public class TelaMeusLivros {
         });
     }
 
+    /**
+     * Constrói a janela tratando internacionalização, componentes e layout.
+     */
     private void construirTela() {
         janela = new JDialog();
         janela.setTitle(I18N.obterTituloTelaMeusLivros());
@@ -338,6 +386,9 @@ public class TelaMeusLivros {
         janela.pack();
     }
 
+    /**
+     * Exibe a tela.
+     */
     private void exibirTela() {
         janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         janela.setLocationRelativeTo(telaPrincipal.obterJanela());

@@ -2,8 +2,16 @@ package br.ufla.dcc.ppoo.imagens;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Classe que centraliza a utilização das imagens do sistema
+ * 
+ * @author Paulo Jr. e Julio Alves
+ */
 public class GerenciadorDeImagens {
 
+    // conjunto de ícones / imagens usadas no sistema.
+    // Obs: atributos são públicos por serem constantes.
+    
     public static final ImageIcon SAIR = carregarIcone("sair.png");
     public static final ImageIcon LOGOUT = carregarIcone("logout.png");
     public static final ImageIcon ENTRAR = carregarIcone("entrar.png");
@@ -18,6 +26,13 @@ public class GerenciadorDeImagens {
     public static final ImageIcon SOBRE = carregarIcone("sobre.png");
     public static final ImageIcon MEUS_LIVROS = carregarIcone("livros.png");
 
+    /**
+     * Retorna um ícone (imagem) a partir do seu nome. Utilizado internamente 
+     * acima no carregamento das imagens.
+     * 
+     * @param caminho Nome da imagem a ser carregada.
+     * @return A imagem carregada.
+     */
     private static ImageIcon carregarIcone(String caminho) {
         return new ImageIcon(GerenciadorDeImagens.class.getResource(caminho));
     }
