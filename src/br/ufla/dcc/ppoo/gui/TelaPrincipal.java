@@ -162,6 +162,9 @@ public class TelaPrincipal {
         if (!sessaoUsuario.estahLogado()) {
             menuInicio.add(menuEntrar);
             menuInicio.add(menuCadastrarUsuario);
+        } else {
+            menuInicio.add(menuMeusLivros);
+            menuInicio.add(menuLogout);
         }
 
         menuSair = new JMenuItem(I18N.obterMenuSair(), GerenciadorDeImagens.SAIR);
@@ -200,16 +203,6 @@ public class TelaPrincipal {
     private void construirMenuUsuario() {
         menuPrincipal = new JMenuBar();
         construirMenuInicio();
-
-        if (sessaoUsuario.estahLogado()) {
-            menuInicio.add(menuMeusLivros);
-            menuInicio.add(menuLogout);
-            
-            // Aqui você poderá adicionar outros menus adequados
-            // ao seu projeto que serão exibidos quando o
-            // usuário estiver logado no sistema.
-        }
-
         construirMenuIdioma();
         construirMenuAjuda();
         janela.setJMenuBar(menuPrincipal);
