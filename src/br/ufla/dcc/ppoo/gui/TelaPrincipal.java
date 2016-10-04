@@ -27,8 +27,8 @@ public class TelaPrincipal {
     private final TelaAutenticacao telaAutenticacao;
     // tela de cadastro de usuário
     private final TelaCadastroUsuario telaCadastroUsuario;
-    // tela de gestão dos livros
-    private final TelaMeusLivros telaMeusLivros;
+    // tela de gestão das músicas
+    private final TelaMinhasMusicas telaMinhasMusicas;
 
     // janela da tela principal
     private JFrame janela;
@@ -57,7 +57,7 @@ public class TelaPrincipal {
     public TelaPrincipal() {
         telaAutenticacao = new TelaAutenticacao(this);
         telaCadastroUsuario = new TelaCadastroUsuario(this);
-        telaMeusLivros = new TelaMeusLivros(this);
+        telaMinhasMusicas = new TelaMinhasMusicas(this);
         sessaoUsuario = SessaoUsuario.obterInstancia();
     }
 
@@ -122,7 +122,7 @@ public class TelaPrincipal {
         menuMeusLivros.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                telaMeusLivros.inicializar();
+                telaMinhasMusicas.inicializar();
             }
         });
 
@@ -159,7 +159,7 @@ public class TelaPrincipal {
         menuEntrar = new JMenuItem(I18N.obterMenuEntrar(), GerenciadorDeImagens.ENTRAR);
         menuCadastrarUsuario = new JMenuItem(I18N.obterMenuCadastrarUsuario(), GerenciadorDeImagens.CADASTRAR_USUARIO);
         menuLogout = new JMenuItem(I18N.obterMenuLogout(), GerenciadorDeImagens.LOGOUT);
-        menuMeusLivros = new JMenuItem(I18N.obterMenuMeusLivros(), GerenciadorDeImagens.MEUS_LIVROS);
+        menuMeusLivros = new JMenuItem(I18N.obterMenuMinhasMusicas(), GerenciadorDeImagens.MEUS_LIVROS);
 
         if (!sessaoUsuario.estahLogado()) {
             menuInicio.add(menuEntrar);

@@ -66,12 +66,12 @@ public class I18N {
     }
 
     /**
-     * Retorna o texto do menu Meus Livros.
+     * Retorna o texto do menu Minhas Músicas.
      * 
-     * @return Texto do menu Meus Livros.
+     * @return Texto do menu Minhas Músicas.
      */
-    public static String obterMenuMeusLivros() {
-        return rb.getString("menu.inicio.meus_livros");
+    public static String obterMenuMinhasMusicas() {
+        return rb.getString("menu.inicio.minhas_musicas");
     }
 
     /**
@@ -268,12 +268,12 @@ public class I18N {
     }
 
     /**
-     * Retorna o título da tela de Meus Livros.
+     * Retorna o título da tela de Minhas Músicas.
      * 
-     * @return Título da tela de Meus Livros.
+     * @return Título da tela de Minhas Músicas.
      */
-    public static String obterTituloTelaMeusLivros() {
-        return rb.getString("tela.meuslivros.titulo");
+    public static String obterTituloTelaMinhasMusicas() {
+        return rb.getString("tela.minhasmusicas.titulo");
     }
 
     /**
@@ -367,48 +367,48 @@ public class I18N {
     }
 
     /**
-     * Retorna o texto do rótulo título do livro.
+     * Retorna o texto do rótulo título da música.
      * 
-     * @return Texto do rótulo título do livro.
+     * @return Texto do rótulo título da música.
      */
-    public static String obterRotuloLivroTitulo() {
-        return rb.getString("rotulo.livro.titulo");
+    public static String obterRotuloMusicaTitulo() {
+        return rb.getString("rotulo.musica.titulo");
     }
 
     /**
-     * Retorna o texto do rótulo autores do livro.
+     * Retorna o texto do rótulo artista da música.
      * 
-     * @return Texto do rótulo autores do livro.
+     * @return Texto do rótulo artista da música.
      */
-    public static String obterRotuloLivroAutores() {
-        return rb.getString("rotulo.livro.autores");
+    public static String obterRotuloMusicaArtista() {
+        return rb.getString("rotulo.musica.artista");
     }
 
     /**
-     * Retorna o texto do rótulo ano do livro.
+     * Retorna o texto do rótulo ano da música.
      * 
-     * @return Texto do rótulo ano do livro.
+     * @return Texto do rótulo ano da música.
      */
-    public static String obterRotuloLivroAno() {
-        return rb.getString("rotulo.livro.ano");
+    public static String obterRotuloMusicaAno() {
+        return rb.getString("rotulo.musica.ano");
     }
 
     /**
-     * Retorna o texto do rótulo número de páginas do livro.
+     * Retorna o texto do rótulo gênero da música.
      * 
-     * @return Texto do rótulo número de páginas do livro.
+     * @return Texto do rótulo gênero da música.
      */
-    public static String obterRotuloLivroNroPaginas() {
-        return rb.getString("rotulo.livro.numpaginas");
+    public static String obterRotuloMusicaGenero() {
+        return rb.getString("rotulo.musica.genero");
     }
 
     /**
-     * Retorna o texto do rótulo descrição do livro.
+     * Retorna o texto do rótulo letra da música.
      * 
-     * @return Texto do rótulo descrição do livro.
+     * @return Texto do rótulo letra da música.
      */
-    public static String obterRotuloLivroDescricao() {
-        return rb.getString("rotulo.livro.descricao");
+    public static String obterRotuloMusicaLetra() {
+        return rb.getString("rotulo.musica.letra");
     }
 
     /**
@@ -421,21 +421,21 @@ public class I18N {
     }
     
     /**
-     * Retorna o título da coluna livro.
+     * Retorna o título da coluna música.
      * 
-     * @return Título da coluna livro.
+     * @return Título da coluna música.
      */
-    public static String obterColunaTituloLivro() {
-        return rb.getString("coluna.titulolivro");
+    public static String obterColunaTituloMusica() {
+        return rb.getString("coluna.titulomusica");
     }
 
     /**
-     * Retorna o título da coluna autores do livro.
+     * Retorna o título da coluna artista da música.
      * 
-     * @return Título da coluna autores do livro.
+     * @return Título da coluna artista da música.
      */
-    public static String obterColunaAutoresLivro() {
-        return rb.getString("coluna.autoreslivro");
+    public static String obterColunaArtistaMusica() {
+        return rb.getString("coluna.artistamusica");
     }
 
 }
