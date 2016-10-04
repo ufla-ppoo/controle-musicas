@@ -12,9 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JRootPane;
 
 /**
  * Classe que representa a Tela Principal
+ *
  * @author Julio
  */
 public class TelaPrincipal {
@@ -163,6 +165,10 @@ public class TelaPrincipal {
             menuInicio.add(menuEntrar);
             menuInicio.add(menuCadastrarUsuario);
         } else {
+            // Aqui você poderá adicionar outros itens de menu adequados
+            // ao seu projeto que serão exibidos quando o
+            // usuário estiver logado no sistema.
+
             menuInicio.add(menuMeusLivros);
             menuInicio.add(menuLogout);
         }
@@ -203,13 +209,13 @@ public class TelaPrincipal {
     private void construirMenuUsuario() {
         menuPrincipal = new JMenuBar();
         construirMenuInicio();
-        
+
         if (sessaoUsuario.estahLogado()) {
-             // Aqui você poderá adicionar outros menus adequados
-             // ao seu projeto que serão exibidos quando o
-             // usuário estiver logado no sistema.
-         }        
-        
+            // Aqui você poderá adicionar outros menus adequados
+            // ao seu projeto que serão exibidos quando o
+            // usuário estiver logado no sistema.
+        }
+
         construirMenuIdioma();
         construirMenuAjuda();
         janela.setJMenuBar(menuPrincipal);
@@ -220,7 +226,7 @@ public class TelaPrincipal {
      */
     private void construirTela() {
         janela = new JFrame(I18N.obterTituloTelaPrincipal());
-        janela.setTitle(I18N.obterNomeDoSistema());
+        janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         construirMenuUsuario();
     }
 
@@ -228,15 +234,18 @@ public class TelaPrincipal {
      * Exibe a tela.
      */
     private void exibirTela() {
-        janela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        // Permite que apenas o botão de fechar esteja disponível na janela.        
+        janela.setUndecorated(true);
+        janela.getRootPane().setWindowDecorationStyle(JRootPane.PLAIN_DIALOG);
+        
         janela.setVisible(true);
-        janela.setResizable(false);
     }
 
     /**
      * Método main, inicializa o programa.
-     * 
+     *
      * @param args Argumentos passados na execução do programa.
      */
     public static void main(String[] args) {
@@ -245,8 +254,8 @@ public class TelaPrincipal {
 
     /**
      * Retorna uma referência para a janela
-     * 
-     * @return 
+     *
+     * @return
      */
     public JFrame obterJanela() {
         return this.janela;
