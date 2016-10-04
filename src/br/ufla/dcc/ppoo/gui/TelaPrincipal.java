@@ -165,9 +165,7 @@ public class TelaPrincipal {
             menuInicio.add(menuEntrar);
             menuInicio.add(menuCadastrarUsuario);
         } else {
-            // Aqui você poderá adicionar outros itens de menu adequados
-            // ao seu projeto que serão exibidos quando o
-            // usuário estiver logado no sistema.
+            // Aqui você poderá adicionar outros itens de menu, se necessário.
 
             menuInicio.add(menuMeusLivros);
             menuInicio.add(menuLogout);
