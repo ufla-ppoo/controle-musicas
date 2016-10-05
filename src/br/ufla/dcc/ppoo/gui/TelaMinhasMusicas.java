@@ -2,7 +2,6 @@ package br.ufla.dcc.ppoo.gui;
 
 import br.ufla.dcc.ppoo.i18n.I18N;
 import br.ufla.dcc.ppoo.imagens.GerenciadorDeImagens;
-import br.ufla.dcc.ppoo.servicos.GerenciadorUsuarios;
 import br.ufla.dcc.ppoo.util.Utilidades;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -32,8 +31,6 @@ public class TelaMinhasMusicas {
 
     // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
-    // referência para o gerenciador de usuários
-    private final GerenciadorUsuarios gerenciadorUsuarios;
 
     // componentes da tela
     private JDialog janela;
@@ -57,13 +54,11 @@ public class TelaMinhasMusicas {
     private JTextArea taLetra;
 
     /**
-     * Constrói a tela de autenticação guardando a referência da tela principal
-     * e criando o gerenciador de usuários.
+     * Constrói a tela de autenticação guardando a referência da tela principal.
      *
      * @param telaPrincipal Referência da tela principal.
      */
     public TelaMinhasMusicas(TelaPrincipal telaPrincipal) {
-        this.gerenciadorUsuarios = new GerenciadorUsuarios();
         this.telaPrincipal = telaPrincipal;
     }
 
@@ -82,8 +77,8 @@ public class TelaMinhasMusicas {
      */
     private void construirTabela() {
         Object[] titulosColunas = {
-            I18N.obterColunaTituloMusica(),
-            I18N.obterColunaArtistaMusica()
+            I18N.obterRotuloMusicaTitulo(),
+            I18N.obterRotuloMusicaArtista()
         };
 
         // Dados "fake"
